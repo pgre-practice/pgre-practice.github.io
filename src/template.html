@@ -1,0 +1,161 @@
+<title>Physics GRE Practice Exam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>{{KATEX_CSS}}</style>
+<style>{{CSS}}</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="fig-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hatch-bg" width="6" height="6"/><line class="hatch-ln" x1="0" y1="0" x2="0" y2="6"/></pattern>
+</defs></svg>
+
+<header class="topbar">
+  <button type="button" class="brand" id="go-home" title="Back to the start page">
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i></span>
+    <span class="brand-name">Physics GRE<span class="long"> Practice Exam</span></span>
+  </button>
+  <span class="spacer"></span>
+  <span class="mode-chip" id="mode-chip" hidden></span>
+  <span class="timer" id="timer" role="timer" aria-label="Time remaining" hidden>2:00:00</span>
+  <button type="button" class="btn quiet const-btn" id="open-const" aria-label="Constants table"><span class="hbar" aria-hidden="true">ℏ</span><span class="txt">Constants</span></button>
+</header>
+
+<main id="view-cover" class="view">
+  <div class="cover">
+    <div class="hero">
+    <div class="cover-head">
+      <div class="eyebrow label"><span>Practice booklet</span><span aria-hidden="true">·</span><span>Physics</span></div>
+      <h1>Physics GRE Practice Exam</h1>
+      <p class="lede">Seventy new questions written in the style of the released exams, each with a worked solution. Take it as a timed test, or work through it one question at a time.</p>
+      <ul class="facts">
+        <li><b>70</b> questions</li>
+        <li><b>2:00:00</b> to finish</li>
+        <li><b>1:43</b> per question</li>
+        <li><b>5</b> choices each</li>
+        <li>Score = number right</li>
+      </ul>
+    </div>
+    <aside class="mini paper" aria-labelledby="mini-h">
+      <div class="mini-head"><h2 class="label" id="mini-h">Practice answer sheet</h2><span class="count" id="mini-count"></span></div>
+      <div class="mini-grid" id="mini-grid">{{MINI}}</div>
+      <div class="legend" aria-hidden="true"><span><i class="ok"></i>right</span><span><i class="bad"></i>wrong</span><span><i class="on"></i>answered</span></div>
+      <p class="mini-note">Tap any number to open that question in practice mode.</p>
+    </aside>
+    </div>
+
+    <div class="modes">
+      <section class="mode" aria-labelledby="m-practice">
+        <h2 id="m-practice">Practice</h2>
+        <p>Answer at your own pace and check each answer right away. Right or wrong, you can open the full worked solution. Filter by topic to drill one area.</p>
+        <p class="status" id="practice-status"></p>
+        <div class="actions" id="practice-actions"></div>
+      </section>
+      <section class="mode" aria-labelledby="m-exam">
+        <h2 id="m-exam">Timed exam</h2>
+        <p>All 70 questions against a two-hour clock, as on test day. Flag questions to come back to. Your score and every solution appear when you submit. The clock pauses if you leave the exam screen.</p>
+        <p class="status" id="exam-status"></p>
+        <div class="actions" id="exam-actions"></div>
+      </section>
+    </div>
+
+    <div class="cover-grid">
+      <section>
+        <h3 class="label">What the test covers</h3>
+        <table class="topics">
+          <thead><tr><th>Topic</th><th class="num">Real test</th><th class="num">Here</th></tr></thead>
+          <tbody>{{TOPIC_ROWS}}</tbody>
+        </table>
+      </section>
+      <section>
+        <h3 class="label">Keys</h3>
+        <dl class="keytable">
+          <div><dt><kbd>A</kbd>–<kbd>E</kbd></dt><dd>Choose an answer (or click it)</dd></div>
+          <div><dt><kbd>Enter</kbd></dt><dd>Check your answer (practice)</dd></div>
+          <div><dt><kbd>S</kbd></dt><dd>Show or hide the solution</dd></div>
+          <div><dt><kbd>F</kbd></dt><dd>Flag the question</dd></div>
+          <div><dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous / next question</dd></div>
+        </dl>
+        <p class="aside">The <span class="hbar-inline">ℏ</span> button opens a table of constants like the one printed in the test book. Progress is saved in this browser, so you can stop and come back.</p>
+      </section>
+    </div>
+
+    <p class="fineprint">These are original questions modeled on the topics, difficulty, and format of the released GRE Physics practice books. They are not ETS questions. This page is not affiliated with or endorsed by ETS. GRE is a registered trademark of ETS.</p>
+  </div>
+</main>
+
+<main id="view-quiz" class="view" hidden>
+  <div class="quiz">
+    <section class="paper" id="paper" aria-label="Question">
+      <div class="qbar">
+        <span class="where" id="where">Question 1 of {{N}}</span>
+        <span class="topic" id="topic-chip"></span>
+        <span class="spacer"></span>
+        <button type="button" class="btn flag-btn" id="flag-btn" aria-pressed="false"><svg class="flag-ico" viewBox="0 0 12 14" aria-hidden="true"><path d="M1.5 13.5V1"/><path class="cloth" d="M1.5 1.5h8l-2 3 2 3h-8"/></svg><span id="flag-txt">Flag</span></button>
+        <button type="button" class="btn sheet-toggle" id="sheet-toggle" aria-controls="sheet" aria-expanded="false">Answer sheet</button>
+      </div>
+      <div id="questions">{{ARTICLES}}</div>
+      <nav class="q-nav" aria-label="Question navigation">
+        <button type="button" class="btn" id="prev">← Previous</button>
+        <span class="mid" id="nav-mid"></span>
+        <button type="button" class="btn primary" id="next" data-act="next">Next →</button>
+      </nav>
+    </section>
+
+    <aside class="sheet" id="sheet" aria-label="Answer sheet">
+      <div class="sheet-head"><h2 class="label">Answer sheet</h2><span class="count" id="sheet-count"></span></div>
+      <div class="sheet-filter" id="sheet-filter">
+        <label class="label" for="topic-filter">Practice topic</label>
+        <select id="topic-filter">{{TOPIC_OPTIONS}}</select>
+      </div>
+      <div class="rows" id="rows">{{SHEET_ROWS}}</div>
+      <div class="legend" aria-hidden="true"><span><i class="on"></i>answered</span><span><i class="fl"></i>flagged</span><span class="ky-item"><i class="ky"></i>correct answer</span></div>
+      <div class="sheet-foot">
+        <div class="stats" id="sheet-stats"></div>
+        <div class="sheet-actions" id="sheet-actions"></div>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+  </div>
+</main>
+
+<main id="view-results" class="view" hidden>
+  <div class="results">
+    <div class="eyebrow label">Timed exam · results</div>
+    <div class="score-card paper">
+      <div class="score-big" id="r-score"></div>
+      <div class="score-meta" id="r-meta"></div>
+    </div>
+    <div class="res-actions">
+      <button type="button" class="btn primary" id="r-review-missed">Review missed questions</button>
+      <button type="button" class="btn" id="r-review-all">Review all 70</button>
+      <button type="button" class="btn quiet" data-act="exam-reset">Retake the exam</button>
+    </div>
+    <div class="res-grid">
+      <section class="paper">
+        <h2 class="label">By topic</h2>
+        <table class="res-topics"><tbody id="r-topics"></tbody></table>
+      </section>
+      <section class="paper">
+        <h2 class="label">Every question</h2>
+        <div class="cells" id="r-cells"></div>
+        <div class="legend cells-legend" aria-hidden="true"><span><i class="ok"></i>correct</span><span><i class="bad"></i>wrong</span><span><i></i>blank</span></div>
+        <h3 class="label slow-h">Where your time went</h3>
+        <ol class="slow" id="r-slow"></ol>
+      </section>
+    </div>
+  </div>
+</main>
+
+<dialog id="dlg-const" aria-labelledby="dlg-const-h">
+  <div class="dlg-head"><h2 id="dlg-const-h">Table of information</h2><button type="button" class="btn quiet" data-close>Close</button></div>
+  <div class="dlg-body">{{CONSTANTS}}</div>
+</dialog>
+
+<dialog id="dlg-confirm" aria-labelledby="dlg-confirm-h">
+  <div class="dlg-head"><h2 id="dlg-confirm-h">Are you sure?</h2></div>
+  <div class="dlg-body"><p id="dlg-confirm-text"></p></div>
+  <div class="dlg-actions"><button type="button" class="btn" id="dlg-cancel">Cancel</button><button type="button" class="btn primary" id="dlg-ok">OK</button></div>
+</dialog>
+
+<script type="application/json" id="meta">{{META}}</script>
+<script>{{JS}}</script>
